@@ -1,0 +1,10 @@
+Make a Music Player with tkinter! - #tkinter30 0/30
+This is a very detailed, in-depth project developed using Python tkinter.
+In this GUI application, we can add music files to the playlist,
+we will be able to Play these files,
+we will be able to Mute these files,
+we can also control the volume of the music,
+we will also be able to Pause, Rewind and Delete items from the playlist. 
+We will also have a status bar which shows the current status of the playlist and view which song is being played. 
+We are going to make a Cool project using tkinter by applying themes, styles. 
+We will be using Pygame library mixer along with tkinter to make this application.
