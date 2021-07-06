@@ -8,3 +8,67 @@ we will also be able to Pause, Rewind and Delete items from the playlist.
 We will also have a status bar which shows the current status of the playlist and view which song is being played. 
 We are going to make a Cool project using tkinter by applying themes, styles. 
 We will be using Pygame library mixer along with tkinter to make this application.
+
+Creating a Tkinter window + Python GUI Programming - #tkinter30 1/30
+We use tkinter. Tkinter is a Python binding to the Tk GUI toolkit. It is the standard Python interface to the Tk GUI toolkit, and is Python's de facto standard GUI.
+We don't need to pip install tkinter or install anything externally, it is included with python.
+from tkinter import * ->Install everything from Tkinter.
+root = Tk() ->This creates a window and stores inside the root variable.
+root.mainloop() ->Any video is a lot of frames or pictures played together. Similarly, whenever we create a window, this is created just for milli seconds and disappears.
+This is just not sufficient to be detected using our naked eye. So we are engaging that window in an infinite loop.
+
+Python GUI with Tkinter - Title, Icon and the Geometry - 2/30
+root.title("Mellody") -> Changes the title of the window to Mellody.
+To add the icon to the window, tkinter only accepts the pictures with .ico extension.
+Downloaded the image in .png format and converted it into .ico format.
+I created a folder images in the Mellody folder and placed the icon image music.ico there.
+root.iconbitmap(r'images/music.ico') -> creates the icon to the root window.
+To change the dimensions of the window, just use root.geometry('width x height')
+
+Python GUI with Tkinter - Text and Images - 3/30
+Everything inside the tkinter window contains a lot of widgets. Any text, picture or buttons that goes inside the tkinter window is a widget.
+text = Label(root, text = 'Lets make some noise')
+After creating a widget in the tkinter window, we have to do something called as packing.
+text.pack()
+Label widget also acts like a container for embedding images in the tkinter window.
+photo = PhotoImage(file = 'images/play.png')
+labelphoto = Label(root,photo)
+But the Label by default treates the photo as text. So we need to specify that it is an image.
+labelphoto = Label(root, image=photo)
+labelphoto.pack()
+
+Python GUI with Tkinter - Adding an Image Button for playing Music - 4/30
+We have a play image in the tkinter window. Now we need to change this image into a button.
+btn = Button(root, image=photo, command=play_btn) #command = play_btn but not play_btn().
+btn.pack()
+command=play_btn is a function that gets called when the button is pressed.
+So let's write the function.
+def play_btn():
+    print("This works")
+Now we can remove the image form the window.
+When we press on the lay button, "This works" is being displayed in the terminal.
+
+Python GUI with Tkinter - Playing music using Pygame - 5/30
+We have seen that our play button works perfectly well.
+Lets add some music so that whenever the play button is preesed the music is played.
+We are going to use mixer in pygame. Mixer is a module in pygame which is responsible for the audio and sound effects.
+In the Pycharm, go to File->Settings->Mellody->Project Intrepretor->Click + icon->Install pygame package.
+from pygame import mixer
+mixer.init() #initializing the mixer.
+Change the name of the variable photo to playPhoto and btn to playBtn.
+Modify the function play_btn() to play the music.
+def play_music():
+    mixer.music.load("Music_files/prabhas_rebel_theme.mp3")
+    mixer.music.play()
+
+Python GUI with Tkinter - Stopping the music using Pygame - 6/30
+Just like we created the play button and the play_music() function, we should create the stop button and a function stops the music when button is clicked.
+
+def stop_music():
+    mixer.music.stop()
+    
+stopPhoto = PhotoImage(file = 'images/stop.png')
+stopBtn = Button(root, image=stopPhoto, command=stop_music)
+stopBtn.pack()
+
+Python GUI with Tkinter - Volume control using Scale Widget - 7/30
