@@ -63,12 +63,66 @@ def play_music():
 
 Python GUI with Tkinter - Stopping the music using Pygame - 6/30
 Just like we created the play button and the play_music() function, we should create the stop button and a function stops the music when button is clicked.
-
 def stop_music():
     mixer.music.stop()
-    
 stopPhoto = PhotoImage(file = 'images/stop.png')
 stopBtn = Button(root, image=stopPhoto, command=stop_music)
 stopBtn.pack()
 
 Python GUI with Tkinter - Volume control using Scale Widget - 7/30
+The Volume control widget is called the Scale widget in tkinter.
+def set_vol(val):
+    volume = int(val)/100
+    mixer.music.set_volume(volume)
+    # set_volume takes values only from 0 to 1. Ex: 0,0.18,0.54,0.99,1
+scale = Scale(root, from_=0, to=1, orient =HORIZONTAL, command =set_vol)# set_vol sends the volume value as a string to the function.
+scale.set(70) #Setting initial volume to 70
+scale.pack()
+We have taken a Scale widget, volume range starting from 0 to 100 in horizontal orientation. But tis widget does'nt fulfill its purpose of adjusting volume now.
+So lets call a function set_vol. When the function is called, the function sends the volume to the function as a string.
+So lets change the data type to int. And since set_volume takes values only from 0 to 1. Ex: 0,0.18,0.54,0.99,1, lets divide it by 100.
+
+Python GUI with Tkinter - Adding a Menubar - 8/30
+We have just set the default value of volume to 70 but when executed, it only plays the default volume.
+mixer.music.set_volume(70) To actually set the volume to 70.
+In the Menubar at the top of the window, there are Sub-Menu's and when clicked on the Sub-Menu, the Drop-Down Menu/ Cascade appears.
+# Create the menubar
+menubar = Menu(root)
+root.config(menu=menubar)
+# Create the submenu
+subMenu = Menu(menubar, tearoff=0)
+menubar.add_cascade(label="File", menu=subMenu)
+subMenu.add_command(label="Open")
+subMenu.add_command(label="Exit")
+
+subMenu = Menu(menubar, tearoff=0)
+menubar.add_cascade(label="Help", menu=subMenu)
+subMenu.add_command(label="About Us")
+
+Python GUI with Tkinter - Messagebox + Executing commands in Menubar - 9/30
+This video is to implement 2 functionalities.
+In the menubar, File->Exit, Help->About us
+import tkinter.messagebox # When we click on About Us, The message box should appear. So we import it from tkinter
+def about_us():
+    tkinter.messagebox.showinfo('About Melody', 'This is a music player build using Python Tkinter by @sripad_v')
+And add a function to subMenu.add_command(label="Exit", command=root.destroy)
+And add a function to subMenu.add_command(label="About Us", command=about_us)
+
+Python GUI with Tkinter - Opening up files using Filedialog Tkinter - 10/30
+from tkinter import filedialog
+def browse_file():
+    global filename
+    filename = filedialog.askopenfilename()
+subMenu.add_command(label="Open", command=browse_file)
+def play_music():
+    try:
+        mixer.music.load(filename)
+        mixer.music.play()
+    except:
+        tkinter.messagebox.showerror('File not found', 'Melody could not find the file. Please check again.')
+        print("Error")
+
+
+
+
+
