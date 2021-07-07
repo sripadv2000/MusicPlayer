@@ -122,7 +122,37 @@ def play_music():
         tkinter.messagebox.showerror('File not found', 'Melody could not find the file. Please check again.')
         print("Error")
 
+Python GUI with Tkinter - Adding a Statusbar - 11/30
+statusbar = Label(root, text="Welcome to Melody", relief=SUNKEN, anchor=W)
+statusbar.pack(side=BOTTOM, fill=X)
+We want to add the status bar at the bottom of the window.
+Just adding text displays the text below the stop button.
+So we give it a box style by using relief=SUNKEN, to take it to the bottom, side=BOTTOM, fill=X in the pack parameter.
+anchor=W (West)anchors the text in status bar to the left(West).
+statusbar['text'] = "Playing music" + ' - ' + os.path.basename('journey.wav')
+In the status bar, we get the status of the song being played.
 
+Python GUI with Tkinter - Pause and Unpause the music using Tkinter and Pygame - 12/30
+def pause_music():
+    global paused
+    paused = TRUE
+    mixer.music.pause()
+    statusbar['text'] = "Music Paused"
+def play_music():
+    try:
+        paused  # Checks whether the 'paused' variable is initialized or not.
+
+    except NameError:  # If not initialized then executes the code under except condition
+        try:
+            mixer.music.load('journey.wav')
+            mixer.music.play()
+            statusbar['text'] = "Playing music" + ' - ' + os.path.basename('journey.wav')
+        except:
+            tkinter.messagebox.showerror('File not found', 'Melody could not find the file. Please check again.')
+
+    else:  # If initialized the it goes to the else condition
+        mixer.music.unpause()
+        statusbar['text'] = "Music Resumed"
 
 
 
