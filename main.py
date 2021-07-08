@@ -1,13 +1,15 @@
+import os
+import tkinter.messagebox
 from tkinter import *
 from tkinter import filedialog
+
 from pygame import mixer
-import tkinter.messagebox
 
 root = Tk()
 
 # Create the menubar
 menubar = Menu(root)
-root.config(menu=menubar)  # this ensures that Menubar is at the top.
+root.config(menu=menubar)
 
 # Create the submenu
 
@@ -34,24 +36,40 @@ subMenu.add_command(label="About Us", command=about_us)
 
 mixer.init()  # initializing the mixer
 
-root.geometry('300x300')
 root.title("Mellody")
 root.iconbitmap(r'images/music.ico')
 
 text = Label(root, text='Lets make some noise!')
-text.pack()
+text.pack(pady=10)
 
 
 def play_music():
     try:
-        mixer.music.load(filename)
-        mixer.music.play()
-    except:
-        tkinter.messagebox.showerror('File not found', 'Melody could not find the file. Please check again.')
+        paused  # Checks whether the 'paused' variable is initialized or not.
+
+    except NameError:  # If not initialized then executes the code under except condition
+        try:
+            mixer.music.load('Music_files/breaking_bad_theme.mp3')
+            mixer.music.play()
+            statusbar['text'] = "Playing music" + ' - ' + os.path.basename('Music_files/breaking_bad_theme.mp3')
+        except:
+            tkinter.messagebox.showerror('File not found', 'Melody could not find the file. Please check again.')
+
+    else:  # If initialized the it goes to the else condition
+        mixer.music.unpause()
+        statusbar['text'] = "Music Resumed"
 
 
 def stop_music():
     mixer.music.stop()
+    statusbar['text'] = "Music Stopped"
+
+
+def pause_music():
+    global paused
+    paused = TRUE
+    mixer.music.pause()
+    statusbar['text'] = "Music Paused"
 
 
 def set_vol(val):
@@ -60,17 +78,27 @@ def set_vol(val):
     # set_volume of mixer takes value only from 0 to 1. Example - 0, 0.1,0.55,0.54.0.99,1
 
 
+middleframe = Frame(root)
+middleframe.pack(pady=10)
+
 playPhoto = PhotoImage(file='images/play.png')
-playBtn = Button(root, image=playPhoto, command=play_music)
-playBtn.pack()
+playBtn = Button(middleframe, image=playPhoto, command=play_music)
+playBtn.grid(row=0, column=0, padx=10)
 
 stopPhoto = PhotoImage(file='images/stop.png')
-stopBtn = Button(root, image=stopPhoto, command=stop_music)
-stopBtn.pack()
+stopBtn = Button(middleframe, image=stopPhoto, command=stop_music)
+stopBtn.grid(row=0, column=1, padx=10)
+
+pausePhoto = PhotoImage(file='images/pause.png')
+pauseBtn = Button(middleframe, image=pausePhoto, command=pause_music)
+pauseBtn.grid(row=0, column=2, padx=10)
 
 scale = Scale(root, from_=0, to=100, orient=HORIZONTAL, command=set_vol)
 scale.set(70)
-mixer.music.set_volume(70)
-scale.pack()
+mixer.music.set_volume(0.7)
+scale.pack(pady=15)
+
+statusbar = Label(root, text="Welcome to Mellody", relief=SUNKEN, anchor=W)
+statusbar.pack(side=BOTTOM, fill=X)
 
 root.mainloop()
