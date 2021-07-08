@@ -168,5 +168,15 @@ For now as our GUI is simple, Pack is enough.
 For complex applications Grid should be used.
 You cant use the Grid and Pack in the same python files unless they are in the frames.
 
+Python GUI with Tkinter - Toggle the Tkinter button + Mute the music with Pygame - 16/30
+Created 2 images for button so that when former is clicked, it changes to latter.
+Implemented the mute functionality. When pressed on the mute button, the button gets changed to volume and the volume scale goes to 0.
+When unmuted, the volume goes back to previous set.
+
+Python GUI with Tkinter - Fixing the Logic of the pause unpause in Pygame - 17/30
+Maintenance Work to be done.
+Put all the images in the Melody folder into the images folder.
+Change the logic of Pause.
+
 
 
