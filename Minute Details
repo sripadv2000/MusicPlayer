@@ -154,5 +154,19 @@ def play_music():
         mixer.music.unpause()
         statusbar['text'] = "Music Resumed"
 
+Python GUI in Tkinter - Pack layout Manager and Frames - 13/30
+We use layout Managers to pack widgets inside the tkinter window.
+Made buttons horizontal.
+removed root.geometry()
+Added padding to buttons.
+Learnt about frames and how they separate the tkinter window into separate halves.
+Created divisions. Top, Middle and Bottom.
+Learnt about the 2 types of layout Managers: Pack layout Manager and Grid layout Manager.
+
+Python GUI with Tkinter - Grid Layout Manager and Frames - 14/30
+For now as our GUI is simple, Pack is enough.
+For complex applications Grid should be used.
+You cant use the Grid and Pack in the same python files unless they are in the frames.
+
 
 
