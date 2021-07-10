@@ -178,5 +178,21 @@ Maintenance Work to be done.
 Put all the images in the Melody folder into the images folder.
 Change the logic of Pause.
 
+Python GUI with Tkinter - Calculating length/duration of the WAV sound files - 18/30
+Display the total length of the song in the window.
+And also display the filename instead of "Lets make some noise."
+For displaying the length of the music, it is easy to display the length for ".wav" files using mixer library.
+But the mp3 files are so big that it is not supported by mixer, so we have to use the mutagen package.
+We just used round() and formatting to display the length of the music file.
+
+Calculating length/duration of the MP3 files using Mutagen - 19/30
+The mp3 music files are big and the pygame mixer just does'nt have the functionality to handle the mp3 files.
+It is just the last 4 letters difference between .mp3 and .wav the extensions.
+So we just use if else statements to run these different files.
+Installed packages: 'mutagen'
+When clicked on the music file properties, we can see the length of the music file.
+This is called metadata.
+SO by using mutagen , we have to extract the metadata.
+
 
 
