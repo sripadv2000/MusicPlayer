@@ -229,3 +229,8 @@ Python GUI with Tkinter - Adding Stylish themes to our Tkinter App - 28/30
 Install the package "ttkthemes".
 from tkinter import ttk
 from ttkthemes import themed_tk as tk
+
+Converting python to executables using cx_freeze - 29/30
+Or another alternative to cx_freeze is py2exe.
+Install cx_Freeze package.
+Create a new file "setup.py".
