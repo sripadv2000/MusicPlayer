@@ -202,3 +202,27 @@ When we play the music and then press the close button, the error shows that "Ru
 At the end of the program, write:
 root.protocol("WM_WINDOW_DELETE",on_closing)
 and create a function on_closing().
+
+Python GUI with Tkinter - Listbox widget + Advance Frames - 22/30
+We use listbox to add playlist that displays songs.
+So in the window, there are left frames and right frames.
+In the left frame, there is the playlist.
+In the right frame, there are again top frame(having Length of music file), middle frame(having buttons), And the bottom frame for volume controls.
+
+Python GUI with Tkinter - Adding items to Listbox- 23/30
+The same way when we click File->Open, a dialog box opens to select the songs. We do the same to add the songs to the playlist.
+Adding the files: browse_file(), add_to_playlist()
+f = os.path.basename(f) adds only the filename instead of the whole path.
+
+Python GUI with Tkinter - Playing Songs on the Playlist with Pygame - 24/30
+In Browse_file(), refactor the variable filename to filename_path and f regactor to filename.
+Create a newlist ; playlist = []
+
+Python GUI with Tkinter - Fixing the Statusbar + Current time + Total Length - 25/30
+Changing the current length of file.
+Line 145, filename_path -> play_it
+
+Python GUI with Tkinter - Deleting items from the Listbox - 26/30
+Adding a function del_btn().
+
+
