@@ -194,5 +194,11 @@ When clicked on the music file properties, we can see the length of the music fi
 This is called metadata.
 SO by using mutagen , we have to extract the metadata.
 
+20/30 Threading done.
 
-
+Python GUI with Tkinter - Events and Bindings - Overriding the close button Tkinter - 21/30
+In the start_count() function, we have used the variable x. Change that to current_time.
+When we play the music and then press the close button, the error shows that "RuntimeError: main thread is not in main loop".
+At the end of the program, write:
+root.protocol("WM_WINDOW_DELETE",on_closing)
+and create a function on_closing().
