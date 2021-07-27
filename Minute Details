@@ -225,4 +225,7 @@ Line 145, filename_path -> play_it
 Python GUI with Tkinter - Deleting items from the Listbox - 26/30
 Adding a function del_btn().
 
-
+Python GUI with Tkinter - Adding Stylish themes to our Tkinter App - 28/30
+Install the package "ttkthemes".
+from tkinter import ttk
+from ttkthemes import themed_tk as tk
