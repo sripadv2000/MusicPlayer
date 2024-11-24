@@ -16,17 +16,20 @@ from tkinter import * ->Install everything from Tkinter.
 root = Tk() ->This creates a window and stores inside the root variable.
 root.mainloop() ->Any video is a lot of frames or pictures played together. Similarly, whenever we create a window, this is created just for milli seconds and disappears.
 This is just not sufficient to be detected using our naked eye. So we are engaging that window in an infinite loop.
+root = Tk() creates a window, and root.mainloop() helps to persist that window.
 
 Python GUI with Tkinter - Title, Icon and the Geometry - 2/30
 root.title("Mellody") -> Changes the title of the window to Mellody.
 To add the icon to the window, tkinter only accepts the pictures with .ico extension.
+www.flaticon.com has numerous images for free. convert the images in the icoconvert.com.
 Downloaded the image in .png format and converted it into .ico format.
 I created a folder images in the Mellody folder and placed the icon image music.ico there.
-root.iconbitmap(r'images/music.ico') -> creates the icon to the root window.
-To change the dimensions of the window, just use root.geometry('width x height')
+root.iconbitmap(r'images/music.ico') -> creates the icon to the root window. r -> stands for raw string.
+root.geometry('width x height') -> To change the dimensions of the window. 
 
 Python GUI with Tkinter - Text and Images - 3/30
-Everything inside the tkinter window contains a lot of widgets. Any text, picture or buttons that goes inside the tkinter window is a widget.
+Everything inside the tkinter window contains a lot of widgets. 
+Any text, picture or buttons that goes inside the tkinter window is a widget.
 text = Label(root, text = 'Lets make some noise')
 After creating a widget in the tkinter window, we have to do something called as packing.
 text.pack()
@@ -36,6 +39,8 @@ labelphoto = Label(root,photo)
 But the Label by default treates the photo as text. So we need to specify that it is an image.
 labelphoto = Label(root, image=photo)
 labelphoto.pack()
+Every tkinter contains a lot of widgets like the Label and PhotoImage.
+We have to pack everything up so that it appears on the window.
 
 Python GUI with Tkinter - Adding an Image Button for playing Music - 4/30
 We have a play image in the tkinter window. Now we need to change this image into a button.
@@ -45,12 +50,13 @@ command=play_btn is a function that gets called when the button is pressed.
 So let's write the function.
 def play_btn():
     print("This works")
-Now we can remove the image form the window.
-When we press on the lay button, "This works" is being displayed in the terminal.
+Now we can remove the image from the window.
+When we press on the play button, "This works" is being displayed in the terminal.
 
 Python GUI with Tkinter - Playing music using Pygame - 5/30
 We have seen that our play button works perfectly well.
-Lets add some music so that whenever the play button is preesed the music is played.
+We have seen how to change the image to a button and when button is clicked, how to execute a function.
+Lets add some music so that whenever the play button is pressed the music is played.
 We are going to use mixer in pygame. Mixer is a module in pygame which is responsible for the audio and sound effects.
 In the Pycharm, go to File->Settings->Mellody->Project Intrepretor->Click + icon->Install pygame package.
 from pygame import mixer
@@ -60,6 +66,10 @@ Modify the function play_btn() to play the music.
 def play_music():
     mixer.music.load("Music_files/prabhas_rebel_theme.mp3")
     mixer.music.play()
+Learnt how to play music, using a class called mixer in pygame. 
+mixer will also help us to pause the music, increase/decrease the volume.
+Initialized the mixer, otherwise the rest of the functions will not work.
+First loaded the file and then played the file, which resulted in the music being played.
 
 Python GUI with Tkinter - Stopping the music using Pygame - 6/30
 Just like we created the play button and the play_music() function, we should create the stop button and a function stops the music when button is clicked.
